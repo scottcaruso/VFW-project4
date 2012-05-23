@@ -112,6 +112,12 @@ window.addEventListener("DOMContentLoaded", function(){
    	
    	function displayCards(){
    		toggleControls("on");
+   		if (localStorage.length === 0){
+   			var ask = confirm("There is no data in local storage. Would you like to populate it with default/dummy data?");
+   			if (ask) {
+   				fillWithJsonData();
+   			};
+   		};
    		var makeDiv = document.createElement("div");
    		makeDiv.setAttribute("id", "cards");
    		var listCardsDL = document.createElement("dl");
@@ -129,6 +135,7 @@ window.addEventListener("DOMContentLoaded", function(){
    			var cardTitle = (obj.name[0] + " " + obj.name[1]);
    			makedt.innerHTML = cardTitle;
    			makedt.setAttribute("class", "cardtitle");
+   			makeCardTypeImage(obj.type[1],makedt);
    			var makeCardDetails = document.createElement("dd");
    			makedt.appendChild(makeCardDetails);
    			delete obj.name;
@@ -141,6 +148,23 @@ window.addEventListener("DOMContentLoaded", function(){
    			};
    			makeEditDeleteLinks(localStorage.key(i), editDeleteLinks);
    		};
+   	};
+   	
+   	//Autofill with Json data
+   	function fillWithJsonData(){
+   		for(var x in json){
+   			var id = Math.floor(Math.random()*3253533);
+   			localStorage.setItem(id, JSON.stringify(json[x]));
+   		};
+   	};
+   	
+   	//creates the thumbnail image for the card type
+   	function makeCardTypeImage(cardTypeName,makedt){
+   		var makeImageLine = document.createElement("dd");
+   		makedt.appendChild(makeImageLine);
+   		var makeImage = document.createElement("img");
+   		var imageSource = makeImage.setAttribute("src","images/" + cardTypeName + ".png");
+   		makeImageLine.appendChild(makeImage);
    	};
    	
    	//This function creates the Edit Card and Delete Card links.
