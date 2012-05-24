@@ -98,9 +98,9 @@ window.addEventListener("DOMContentLoaded", function(){
    		getCardType();
    		var card = {};
    			card.name = ["Card Name:", elementName("cardname").value];
-            card.colors = ["Colors:", cardColors];
+            card.type = ["Card Type:", typeValue];
    			card.mana = ["Mana Cost:", elementName("manacosts").value];
-   			card.type = ["Card Type:", typeValue];
+            card.colors = ["Colors:", cardColors];
    			card.usage = ["Currently In Use?", elementName("currentuse").value];
    			card.notes = ["Notes:", elementName("comments").value];
    			card.date = ["Date Acquired:", elementName("dateacquired").value];
@@ -209,6 +209,26 @@ window.addEventListener("DOMContentLoaded", function(){
    		var cardUnstring = JSON.parse(card);
    		toggleControls("off");
    		elementName("cardname").value = cardUnstring.name[1];
+         var type = document.forms[0].type;
+         for(var i=0; i<type.length; i++){
+            if(type[i].value == "Creature" && cardUnstring.type[1] == "Creature"){
+               type[i].setAttribute("checked", "checked");
+            } else if(type[i].value == "Planeswalker" && cardUnstring.type[1] == "Planeswalker"){
+               type[i].setAttribute("checked", "checked");
+            } else if(type[i].value == "Instant" && cardUnstring.type[1] == "Instant"){
+               type[i].setAttribute("checked", "checked");
+            } else if(type[i].value == "Sorcery" && cardUnstring.type[1] == "Sorcery"){
+               type[i].setAttribute("checked", "checked");
+            } else if(type[i].value == "Enchantment-Buff" && cardUnstring.type[1] == "Enchantment = Buff"){
+               type[i].setAttribute("checked", "checked");
+            } else if(type[i].value == "Enchantment-Curse" && cardUnstring.type[1] == "Enchantment = Curse"){
+               type[i].setAttribute("checked", "checked");
+            } else if(type[i].value == "Artifact" && cardUnstring.type[1] == "Artifact"){
+               type[i].setAttribute("checked", "checked");
+            } else if(type[i].value == "Land" && cardUnstring.type[1] == "Land"){
+               type[i].setAttribute("checked", "checked");
+            }; 
+         };    
    		elementName("manacosts").value = cardUnstring.mana[1];
    		var colors = cardUnstring.colors;
    		var namesOfColors = colors[1];
@@ -238,26 +258,6 @@ window.addEventListener("DOMContentLoaded", function(){
 			};
          */
 		};
-		var type = document.forms[0].type;
-		for(var i=0; i<type.length; i++){
-   			if(type[i].value == "Creature" && cardUnstring.type[1] == "Creature"){
-   				type[i].setAttribute("checked", "checked");
-   			} else if(type[i].value == "Planeswalker" && cardUnstring.type[1] == "Planeswalker"){
-   				type[i].setAttribute("checked", "checked");
-   			} else if(type[i].value == "Instant" && cardUnstring.type[1] == "Instant"){
-   				type[i].setAttribute("checked", "checked");
-   			} else if(type[i].value == "Sorcery" && cardUnstring.type[1] == "Sorcery"){
-   				type[i].setAttribute("checked", "checked");
-   			} else if(type[i].value == "Enchantment - Buff" && cardUnstring.type[1] == "Enchantment = Buff"){
-   				type[i].setAttribute("checked", "checked");
-   			} else if(type[i].value == "Enchantment - Curse" && cardUnstring.type[1] == "Enchantment = Curse"){
-   				type[i].setAttribute("checked", "checked");
-   			} else if(type[i].value == "Artifact" && cardUnstring.type[1] == "Artifact"){
-   				type[i].setAttribute("checked", "checked");
-   			} else if(type[i].value == "Land" && cardUnstring.type[1] == "Land"){
-   				type[i].setAttribute("checked", "checked");
-   			};	
-   		};		
 		elementName("currentuse").value = cardUnstring.usage[1];
    		elementName("comments").value = cardUnstring.notes[1];
    		elementName("dateacquired").value = cardUnstring.date[1];
