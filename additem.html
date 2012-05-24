@@ -38,47 +38,6 @@
 					<label for="cardname">Card Name </label>
 					<input type="text" id="cardname" />
 				</div>
-				<label for="manacost" id="manacost">Mana Cost </label>
-				<!--  commenting out, as the javascript now creates this <select id="manacost">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10+</option>
-				</select> -->
-				<dl>
-					<dt id = "cardcolors">Card Color(s)</dt>
-						<dd class="white">
-							<input type="checkbox" value="White" id="white" />
-							<label for="white">White</label>
-						</dd>
-						<dd>
-							<input type="checkbox" value="Black" id="black" />
-							<label for="black">Black</label>	
-						</dd>
-						<dd class="blue">
-							<input type="checkbox" value="Blue" id="blue" />
-							<label for="blue">Blue</label>	
-						</dd>
-						<dd class="red">
-							<input type="checkbox" value="Red" id="red" />
-							<label for="red">Red</label>	
-						</dd>
-						<dd class="green">
-							<input type="checkbox" value="Green" id="green" />
-							<label for="green">Green</label>	
-						</dd>
-						<dd class="gray">
-							<input type="checkbox" value="Colorless" id="colorless" />
-							<label for="colorless">Colorless</label>	
-						</dd>
-				</dl>
 				<dl>
 					<dt>Card Type</dt>
 						<dd>
@@ -120,6 +79,47 @@
 							<label for="land" hidden>Super Awesome New Type</label>	
 						</dd>
 				</dl>
+				<label for="manacost" id="manacost">Mana Cost </label>
+				<!--  commenting out, as the javascript now creates this <select id="manacost">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10+</option>
+				</select> -->
+				<dl>
+					<dt id = "cardcolors">Card Color(s)</dt>
+						<dd class="white">
+							<input type="checkbox" value="White" id="white" />
+							<label for="white">White</label>
+						</dd>
+						<dd>
+							<input type="checkbox" value="Black" id="black" />
+							<label for="black">Black</label>	
+						</dd>
+						<dd class="blue">
+							<input type="checkbox" value="Blue" id="blue" />
+							<label for="blue">Blue</label>	
+						</dd>
+						<dd class="red">
+							<input type="checkbox" value="Red" id="red" />
+							<label for="red">Red</label>	
+						</dd>
+						<dd class="green">
+							<input type="checkbox" value="Green" id="green" />
+							<label for="green">Green</label>	
+						</dd>
+						<dd class="gray">
+							<input type="checkbox" value="Colorless" id="colorless" />
+							<label for="colorless">Colorless</label>	
+						</dd>
+				</dl>
 			</fieldset>			
 			<fieldset class="secondary">
 				<legend>Secondary Details - Optional</legend>
@@ -140,7 +140,8 @@
 				</div>
 				<div class="formelement">
 					<label for="preference">How Much I Love This Card </label>
-					<input type="range" id="preference" min="1" max="10" />
+					<input type="range" id="preference" min="1" max="10" value="5" />
+                    <input id="preferenceDisplay" type="text" size="2" disabled />
 				</div>
 			</fieldset>			
 				<input type="button" value="Submit Card Info" id="submit" />

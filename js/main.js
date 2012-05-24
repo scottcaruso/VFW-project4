@@ -77,7 +77,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			case "off":
 				elementName("form").style.display = "block";
 				elementName("eraseData").style.display = "inline";
-				elementName("displayData").style.display = "inline";
+				elementName("displayData").style.display = "none";
 				elementName("cards").style.display = "none";
 				elementName("addCard").style.display = "none";		
 				break;
@@ -98,8 +98,8 @@ window.addEventListener("DOMContentLoaded", function(){
    		getCardType();
    		var card = {};
    			card.name = ["Card Name:", elementName("cardname").value];
+            card.colors = ["Colors:", cardColors];
    			card.mana = ["Mana Cost:", elementName("manacosts").value];
-   			card.colors = ["Colors:", cardColors];
    			card.type = ["Card Type:", typeValue];
    			card.usage = ["Currently In Use?", elementName("currentuse").value];
    			card.notes = ["Notes:", elementName("comments").value];
@@ -163,7 +163,7 @@ window.addEventListener("DOMContentLoaded", function(){
    		var makeImageLine = document.createElement("dd");
    		makedt.appendChild(makeImageLine);
    		var makeImage = document.createElement("img");
-   		var imageSource = makeImage.setAttribute("src","images/" + cardTypeName + ".png");
+   		var imageSource = makeImage.setAttribute("src","img/" + cardTypeName + ".png");
    		makeImageLine.appendChild(makeImage);
    	};
    	
@@ -215,7 +215,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		for(var i=0; i < namesOfColors.length; i++){
 			var colorName = namesOfColors[i];
          elementName(colorName).setAttribute("checked", "checked");
-         //Commenting out below - this used to exist in Project 3, but I was challenge to 
+         //Commenting out below - this used to exist in Project 3, but I was challenged to 
          //find a way to condense this and make it more dynamic
          /*
          if(namesOfColors[i] == "white"){
@@ -262,6 +262,7 @@ window.addEventListener("DOMContentLoaded", function(){
    		elementName("comments").value = cardUnstring.notes[1];
    		elementName("dateacquired").value = cardUnstring.date[1];
    		elementName("preference").value = cardUnstring.love[1];
+         displayPreference(preference, preferenceDisplay); //make sure preference value updates
    		saveCardData.removeEventListener("click", saveCard);
    		elementName("submit").value = "Edit Card";
    		var newButton = elementName("submit");
@@ -335,11 +336,22 @@ window.addEventListener("DOMContentLoaded", function(){
    		};
    	};
 
+      //populates the unselectable text box next to the slider
+      function displayPreference(preference, preferenceDisplay) {
+            var x = elementName("preference");
+            var y = elementName("preferenceDisplay");
+            y.value = x.value;
+        }
+
+      window.onload = displayPreference(preference, preferenceDisplay);
+
 	//Make things happen when the links are clicked.
 	var displayCardData = elementName("displayData");
 	displayCardData.addEventListener("click", displayCards);
   	var clearCardData = elementName("eraseData");
   	clearCardData.addEventListener("click", eraseCardData);
   	var saveCardData = elementName("submit");
-  	saveCardData.addEventListener("click", validate);                            
+  	saveCardData.addEventListener("click", validate);    
+   var sliderChange = elementName("preference");
+   sliderChange.addEventListener("change", displayPreference);      
 });
