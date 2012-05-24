@@ -1,6 +1,6 @@
 //Scott Caruso
 //VFW 1205
-//Project 3
+//Project 4 - Main JS file
 
 window.addEventListener("DOMContentLoaded", function(){	   	   			   
     //Variables
