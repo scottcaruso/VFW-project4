@@ -212,8 +212,13 @@ window.addEventListener("DOMContentLoaded", function(){
    		elementName("manacosts").value = cardUnstring.mana[1];
    		var colors = cardUnstring.colors;
    		var namesOfColors = colors[1];
-		for(var i=0; i <= namesOfColors.length; i++){
-			if(namesOfColors[i] == "white"){
+		for(var i=0; i < namesOfColors.length; i++){
+			var colorName = namesOfColors[i];
+         elementName(colorName).setAttribute("checked", "checked");
+         //Commenting out below - this used to exist in Project 3, but I was challenge to 
+         //find a way to condense this and make it more dynamic
+         /*
+         if(namesOfColors[i] == "white"){
 				elementName("white").setAttribute("checked", "checked");
 			};
 			if(namesOfColors[i] == "black"){
@@ -231,6 +236,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			if(namesOfColors[i] == "colorless"){
 				elementName("colorless").setAttribute("checked", "checked");
 			};
+         */
 		};
 		var type = document.forms[0].type;
 		for(var i=0; i<type.length; i++){
